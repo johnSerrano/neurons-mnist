@@ -1,11 +1,11 @@
 from pyfann import libfann
 
-learning_rate = 0.7
+learning_rate = 0.4
 num_input = 784
-num_hidden_1 = 15
+num_hidden_1 = 100
 num_output = 10
 
-desired_error = 0.04
+desired_error = 0.03
 max_iterations = 10000
 iterations_between_reports = 10
 
