@@ -33,11 +33,11 @@ test_labels = np_utils.to_categorical(test_labels, nb_classes)
 
 model.fit(train_data, train_labels, nb_epoch=15, batch_size=128, verbose=1, shuffle=True, show_accuracy=True)
 
-result = model.evaluate(test_data, test_labels, batch_size=10000, show_accuracy=True, verbose=1, sample_weight=None)
+result = model.evaluate(test_data, test_labels, batch_size=10000, show_accuracy=True, verbose=0, sample_weight=None)
 print('Test score:', result[0])
 print('Test accuracy:', result[1])
 
-results = model.predict_classes(test_data, batch_size=10000)
+results = model.predict_classes(test_data, batch_size=10000, verbose=0)
 
 test_data = test_data.reshape(10000, 28, 28)
 
