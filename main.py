@@ -16,11 +16,14 @@ nb_classes = 10
 
 model = Sequential()
 
+model.add(Convolution2D(25, 3, 3, border_mode="same", input_shape=(1, 28, 28)))
+model.add(Activation("relu"))
+model.add(MaxPooling2D(pool_size=(2, 2)))
 model.add(Convolution2D(64, 3, 3, border_mode="same", input_shape=(1, 28, 28)))
 model.add(Activation("relu"))
 model.add(MaxPooling2D(pool_size=(2, 2)))
 model.add(Flatten())
-model.add(Dense(input_dim=129, output_dim=100, init="glorot_uniform"))
+model.add(Dense(input_dim=128, output_dim=100, init="glorot_uniform"))
 model.add(Activation("relu"))
 model.add(Dense(input_dim=100, output_dim=10, init="glorot_uniform"))
 model.add(Activation("softmax"))
@@ -28,8 +31,6 @@ model.compile(loss="mean_absolute_error", optimizer='adam')
 
 (train_data, train_labels), (test_data, test_labels) = mnist.load_data()
 
-#train_data = train_data.reshape(60000, 784)
-#test_data = test_data.reshape(10000, 784)
 train_data = train_data.reshape(train_data.shape[0], 1, 28, 28)
 test_data = test_data.reshape(test_data.shape[0], 1, 28, 28)
 
