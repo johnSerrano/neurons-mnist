@@ -39,6 +39,6 @@ test_labels = np_utils.to_categorical(test_labels, nb_classes)
 
 model.fit(train_data, train_labels, nb_epoch=10, batch_size=128, verbose=1, shuffle=True, show_accuracy=True)
 
-result = model.evaluate(test_data, test_labels, batch_size=32, show_accuracy=True, verbose=1, sample_weight=None)
+result = model.evaluate(test_data, test_labels, batch_size=10000, show_accuracy=True, verbose=1, sample_weight=None)
 print('Test score:', result[0])
 print('Test accuracy:', result[1])
