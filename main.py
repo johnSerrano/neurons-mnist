@@ -11,9 +11,9 @@ nb_classes = 10
 model = Sequential()
 
 model.add(Dense(input_dim=784, output_dim=300, init="glorot_uniform"))
-model.add(Activation("sigmoid"))
+model.add(Activation("relu"))
 model.add(Dense(input_dim=300, output_dim=100, init="glorot_uniform"))
-model.add(Activation("sigmoid"))
+model.add(Activation("relu"))
 model.add(Dense(input_dim=100, output_dim=10, init="glorot_uniform"))
 model.add(Activation("softmax"))
 
