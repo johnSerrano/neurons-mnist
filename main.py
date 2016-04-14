@@ -1,5 +1,5 @@
 from keras.models import Sequential
-from keras.layers.core import Dense, Activation, Flatten
+from keras.layers.core import Dense, Activation, Flatten, Dropout
 from keras.layers.convolutional import Convolution2D, MaxPooling2D
 from keras.datasets import mnist
 from keras.utils import np_utils
@@ -21,13 +21,16 @@ model.add(Activation("relu"))
 model.add(MaxPooling2D(pool_size=(2, 2)))
 model.add(Convolution2D(64, 3, 3, border_mode="same", input_shape=(1, 28, 28)))
 model.add(Activation("relu"))
+model.add(Dropout(0.25))
 model.add(MaxPooling2D(pool_size=(2, 2)))
 model.add(Flatten())
-model.add(Dense(input_dim=128, output_dim=100, init="glorot_uniform"))
+model.add(Dense(output_dim=100, init="glorot_uniform"))
 model.add(Activation("relu"))
-model.add(Dense(input_dim=100, output_dim=10, init="glorot_uniform"))
+model.add(Dropout(0.4))
+model.add(Dense(output_dim=10, init="glorot_uniform"))
 model.add(Activation("softmax"))
-model.compile(loss="mean_absolute_error", optimizer='adam')
+
+model.compile(loss="categorical_crossentropy", optimizer='adadelta')
 
 (train_data, train_labels), (test_data, test_labels) = mnist.load_data()
 
